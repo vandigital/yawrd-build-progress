@@ -1,5 +1,3 @@
-# YAW-001 — Build Progress
-
 [![Yawrd — Amazing projects get built here. YAW-001 Build Progress: a planned public, read-only look at our progress.](assets/yaw-001-build-progress-banner.webp)](https://yawrd.keelbase.io/)
 
 **Building Yawrd, together.**
