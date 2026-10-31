@@ -1,8 +1,10 @@
+// Original component: VanClaw. Portability corrections: Codex; see CONTRIBUTION-EVIDENCE.md.
+import type { CSSProperties } from "react";
 import {
   type ProjectProgressData,
   assertProjectProgressData,
   SYNTHETIC_NOTICE,
-} from "@/contracts/build-progress/contract";
+} from "../contracts/build-progress/contract.ts";
 
 export type { ProjectProgressData };
 
@@ -41,7 +43,7 @@ export function ProjectProgress({ data }: ProjectProgressProps) {
   const showNotice = isSynthetic && data.notice === NOTICE_TEXT;
 
   const style = {
-    container: { maxWidth: 480, fontFamily: "sans-serif", margin: "0 auto" } as React.CSSProperties,
+    container: { maxWidth: 480, fontFamily: "sans-serif", margin: "0 auto" } as CSSProperties,
     notice: {
       background: "#fff3cd",
       color: "#856404",
@@ -50,26 +52,26 @@ export function ProjectProgress({ data }: ProjectProgressProps) {
       padding: "8px 12px",
       marginBottom: 16,
       fontSize: 13,
-    } as React.CSSProperties,
-    section: { marginBottom: 20 } as React.CSSProperties,
-    heading: { fontSize: 16, fontWeight: 600, marginTop: 0, marginBottom: 8 } as React.CSSProperties,
-    empty: { color: "#6c757d", fontStyle: "italic", fontSize: 14, margin: "8px 0" } as React.CSSProperties,
-    list: { listStyle: "none", padding: 0, margin: 0 } as React.CSSProperties,
+    } as CSSProperties,
+    section: { marginBottom: 20 } as CSSProperties,
+    heading: { fontSize: 16, fontWeight: 600, marginTop: 0, marginBottom: 8 } as CSSProperties,
+    empty: { color: "#6c757d", fontStyle: "italic", fontSize: 14, margin: "8px 0" } as CSSProperties,
+    list: { listStyle: "none", padding: 0, margin: 0 } as CSSProperties,
     listItem: {
       padding: "6px 0",
       borderBottom: "1px solid #e9ecef",
       fontSize: 14,
-    } as React.CSSProperties,
+    } as CSSProperties,
     label: {
       display: "inline-block",
       minWidth: 88,
       fontWeight: 600,
       fontSize: 13,
-    } as React.CSSProperties,
-    activity: { marginBottom: 12 } as React.CSSProperties,
-    activitySummary: { display: "block", marginBottom: 2 } as React.CSSProperties,
-    activityMeta: { fontSize: 12, color: "#6c757d" } as React.CSSProperties,
-    link: { fontSize: 12, color: "#0366d6" } as React.CSSProperties,
+    } as CSSProperties,
+    activity: { marginBottom: 12 } as CSSProperties,
+    activitySummary: { display: "block", marginBottom: 2 } as CSSProperties,
+    activityMeta: { fontSize: 12, color: "#6c757d" } as CSSProperties,
+    link: { fontSize: 12, color: "#0366d6" } as CSSProperties,
   };
 
   const statusLabel = (s: string) => STATUS_LABELS[s] ?? s;
