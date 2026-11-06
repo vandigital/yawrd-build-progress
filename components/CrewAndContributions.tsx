@@ -1,12 +1,19 @@
 import {
   assertCrewAndContributionsData,
   SYNTHETIC_NOTICE,
-  type CrewAndContributionsData
+  type ContributionStatus,
+  type CrewAndContributionsData,
+  type PublicContributor
 } from "../contracts/build-progress/contract.ts";
 
 export interface CrewAndContributionsProps {
   data: CrewAndContributionsData;
 }
+
+const CONTRIBUTION_STATUS_LABELS: Record<ContributionStatus, string> = {
+  accepted: "Accepted",
+  integrated: "Integrated",
+};
 
 export function CrewAndContributions({
   data
@@ -16,6 +23,13 @@ export function CrewAndContributions({
   assertCrewAndContributionsData(data);
 
   const isSynthetic = data.dataKind === "synthetic";
+
+  // Stable contributor lookup for contribution attribution. The validator
+  // guarantees every contributorId resolves within this snapshot.
+  const contributorById = new Map<string, PublicContributor>();
+  for (const contributor of data.contributors) {
+    contributorById.set(contributor.id, contributor);
+  }
 
   return (
     <section aria-label="Crew and contributions">
@@ -55,10 +69,54 @@ export function CrewAndContributions({
         </ul>
       )}
 
-      {/*
-        Contribution rendering is intentionally omitted: it belongs to a
-        later approved stage and is not implemented in this component.
-      */}
+      {data.contributions.length === 0 ? (
+        <p>No accepted contributions published yet</p>
+      ) : (
+        <ul>
+          {data.contributions.map((contribution) => {
+            const contributor = contributorById.get(contribution.contributorId);
+            const contributorAgent = contributor?.agent;
+            // Agent attribution only when an agentId is explicitly supplied and
+            // matches this contributor's published agent. Never inferred from
+            // the mere presence of an agent profile.
+            const agent =
+              contributor !== undefined &&
+              contribution.agentId !== undefined &&
+              contributorAgent !== undefined &&
+              contributorAgent.id === contribution.agentId
+                ? contributorAgent
+                : null;
+            const evidenceUrl =
+              typeof contribution.link === "string" &&
+              contribution.link.startsWith("https://")
+                ? contribution.link
+                : null;
+
+            return (
+              <li key={contribution.id}>
+                <p>
+                  <strong style={{ overflowWrap: "anywhere" }}>{contribution.title}</strong>{" "}
+                  <span>{CONTRIBUTION_STATUS_LABELS[contribution.status]}</span>
+                </p>
+                {contributor ? (
+                  <p>
+                    By <strong>{contributor.displayName}</strong>
+                  </p>
+                ) : null}
+                {agent ? <p>Agent: {agent.displayName}</p> : null}
+                {evidenceUrl ? (
+                  <p>
+                    <a href={evidenceUrl} target="_blank" rel="noopener noreferrer
+">
+                      Evidence
+                    </a>
+                  </p>
+                ) : null}
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </section>
   );
 }
