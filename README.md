@@ -1,6 +1,46 @@
-# yawrd-build-progress
+# YAW-001 — Build Progress
 
-Public contribution repository for YAW-001 Build Progress — React/TypeScript components for project milestones, crew members, and accepted contributions on Yawrd.
+[![Yawrd — Amazing projects get built here. YAW-001 Build Progress: a planned public, read-only look at our progress.](assets/yaw-001-build-progress-banner.webp)](https://yawrd.keelbase.io/)
+
+**Building Yawrd, together.**
+
+NEAR Hackathon 2026 | November 1–14 | Testnet
+
+[Visit Yawrd](https://yawrd.keelbase.io/)
+
+## What is Yawrd?
+
+Yawrd is a place where people and their AI agents come together to build what's next.
+
+The planned experience lets you open a funded project space, recruit a crew, collaborate on real work, and reward accepted contributions through transparent governance.
+
+## Our Genesis Project
+
+**YAW-001: Build Progress** is the first project being developed through Yawrd.
+
+We're building a public-facing experience planned to showcase:
+
+- Project milestones and task progress
+- Approved Crew Members and their AI agents, with explicit publication permission
+- Accepted contributions and development activity
+- Public records of reviewed and accepted work
+
+This repository hosts the public contribution contract, task brief and portable React/TypeScript Project Progress component for that experience.
+
+## Built for the NEAR Hackathon
+
+During the November 1–14, 2026 hackathon, we plan to demonstrate a complete Yawrd lifecycle, from creating a project to accepting contributions and rewarding work through NEAR Testnet governance.
+
+**Current status: Hackathon development.** Features, contributions and on-chain transactions will be reported as completed only after verification. The repository's fixtures are synthetic examples, not evidence of agent contributions, DAO deployments or rewards.
+
+## Contributing
+
+Contributions follow bounded project tasks, pull requests and human review. Private platform code, credentials and proprietary Keelbase infrastructure remain outside this public repository.
+
+- Read [Task A — Project Progress](TASK-A.md) for scope, acceptance criteria, integration requirements and the standalone fixture smoke check.
+- Follow the [Build Progress public component contract](contracts/build-progress/README.md) for data shapes, publication permissions, display rules and synthetic-data disclosure.
+
+The repository includes the contract, validators, synthetic fixtures, Task A component and focused verification setup. The contract guide references an upstream contract test runner; the standalone fixture smoke check remains in Task A, and the component verification commands are below.
 
 ## Task A integration
 
@@ -51,8 +91,29 @@ URL with `noopener noreferrer`. Linked content is never fetched or embedded.
 
 Styling is the original inline React style objects: a centered panel with a
 480px maximum width, sans-serif text, a notice panel and simple spacing/list
-rules. There are no external CSS, icon or design-system requirements. Human
-browser and accessibility review remains necessary.
+rules. There are no external CSS, icon or design-system requirements. This is a
+portable functional contribution, not a finished Yawrd UI.
+
+## Browser review and known integration limitation
+
+The November 6, 2026 focused Chromium review checked the populated and empty
+synthetic fixtures at 320px, 768px and 1280px. Those fixtures and long titles and
+summaries containing spaces fit without horizontal overflow, clipping or section
+overlap. The exact synthetic notice, readable status labels, dates and optional
+evidence link remained visible. Chromium exposed the named region, headings and
+lists; keyboard Tab reached the evidence link with a visible focus outline.
+Measured preview text/background contrast met the 4.5:1 normal-text threshold.
+
+**Known limitation:** contract-valid unbroken titles (120 consecutive characters)
+and summaries (240 consecutive characters) did not wrap and caused horizontal
+overflow at all three viewport widths. Responsive testing did not pass completely.
+The founder directed that VanClaw's component remain unchanged as a portable
+functional contribution; handling long unbroken content is deferred to subsequent
+production integration. This review does not establish production UI readiness.
+
+Actual screen-reader operation, other browsers, physical mobile devices and
+full-page host integration were not tested. Production integration still requires
+its own layout and accessibility review.
 
 ## Reproduce the focused checks
 
@@ -83,3 +144,7 @@ perform browser, responsive layout, contrast or assistive-technology testing.
 
 See [CONTRIBUTION-EVIDENCE.md](./CONTRIBUTION-EVIDENCE.md) for original AI authorship,
 human-controlled submission, the two Codex corrections, checksums and limitations.
+
+[Explore Yawrd](https://yawrd.keelbase.io/)
+
+*A Keelbase Experience.*
