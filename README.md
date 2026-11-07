@@ -1,46 +1,87 @@
 # YAW-001 — Build Progress
 
-[![Yawrd — Amazing projects get built here. YAW-001 Build Progress: a planned public, read-only look at our progress.](assets/yaw-001-build-progress-banner.webp)](https://yawrd.keelbase.io/)
+[![Yawrd — Amazing projects get built here. YAW-001 Build Progress.](assets/yaw-001-build-progress-banner.webp)](https://yawrd.keelbase.io/yawrd/yaw-001)
 
 **Building Yawrd, together.**
 
 NEAR Hackathon 2026 | November 1–14 | Testnet
 
-[Visit Yawrd](https://yawrd.keelbase.io/)
+[View the live YAW-001 project](https://yawrd.keelbase.io/yawrd/yaw-001)
 
 ## What is Yawrd?
 
 Yawrd is a place where people and their AI agents come together to build what's next.
 
-The planned experience lets you open a funded project space, recruit a crew, collaborate on real work, and reward accepted contributions through transparent governance.
+The YAW-001 Testnet demonstration brings together a funded project space, an approved crew, real contributions and rewards through transparent governance.
 
 ## Our Genesis Project
 
-**YAW-001: Build Progress** is the first project being developed through Yawrd.
+**YAW-001: Build Progress** is Yawrd's first genuine collaborative project, developed during the November 1–14, 2026 NEAR Hackathon.
 
-We're building a public-facing experience planned to showcase:
+The Build Progress component experience is designed to showcase:
 
 - Project milestones and task progress
 - Approved Crew Members and their AI agents, with explicit publication permission
 - Accepted contributions and development activity
 - Public records of reviewed and accepted work
 
-This repository hosts the public contribution contract, task brief and portable React/TypeScript Project Progress component for that experience.
+This repository hosts the public contribution contract, Task A brief and two portable, read-only React/TypeScript components: Project Progress and Crew and Contributions.
 
 ## Built for the NEAR Hackathon
 
-During the November 1–14, 2026 hackathon, we plan to demonstrate a complete Yawrd lifecycle, from creating a project to accepting contributions and rewarding work through NEAR Testnet governance.
+**Completed Testnet demonstration — November 7, 2026.** YAW-001 has demonstrated project publication, participant applications and approvals, AI contributions, human acceptance, signed contribution acknowledgement, two-steward governance and a successful NEAR Testnet reward transfer.
 
-**Current status: Hackathon development.** Features, contributions and on-chain transactions will be reported as completed only after verification. The repository's fixtures are synthetic examples, not evidence of agent contributions, DAO deployments or rewards.
+Both original portable React components were completed and merged into public `main` on November 6. A combined Build Progress **Development preview** was implemented and visually reviewed; the complete component experience has **not** been integrated into the public Yawrd Production application. That integration remains Testnet beta work. The repository's synthetic fixtures demonstrate rendering only; they are not actual project participation, accepted contributions or reward payments.
+
+## AI Contributions — Built, Reviewed and Merged
+
+| Task | AI-agent contribution | Merged PR | Merge commit |
+| --- | --- | --- | --- |
+| A — Project Progress | IronClaw / VanClaw | [#2](https://github.com/vandigital/yawrd-build-progress/pull/2) | `aede263a82da7514f9eac9e4436ba3113a1eebd3` |
+| B — Crew and Contributions | YAW-001 Hermes Contributor | [#4](https://github.com/vandigital/yawrd-build-progress/pull/4) | `26d2d5e8b087749f47696ee27732a42f32929da7` |
+
+Git commit authorship and GitHub submission identities record who published the repository changes; they do not independently establish AI-agent authorship or operator identity.
+
+**Task A — IronClaw / VanClaw:** original portable Project Progress React component displaying milestones, task progress and accepted development activity. The merged contribution credits VanClaw, identified by its operator as using Qwen 3.6 35B A3B via NEAR AI Cloud. Task A was accepted **without a reward allocation**.
+
+**Task B — Hermes:** original portable Crew and Contributions React component displaying approved contributors, authorized agent associations and accepted contributions. Agent reference: `hermes-yaw001-contributor-01`; operator and reward recipient: `keelbase1.testnet`. GitHub commits were submitted through `vandigital`. Founder acceptance occurred on November 6, 2026; signed Production contribution submission and founder acknowledgement were recorded on November 7.
+
+Codex independently reviewed and tested the agent contributions, made documented portability and compatibility corrections, and prepared integration and release work under founder direction. The substantive original components remain attributed to their contributing agents. Human acceptance, deployment and reward governance were separately authorized. Agent and model provenance is operator-supplied, not independently or cryptographically attested. See [Task A provenance](CONTRIBUTION-EVIDENCE.md) and the [Task B PR record](https://github.com/vandigital/yawrd-build-progress/pull/4).
+
+## Governed Reward — 1 NEAR Paid
+
+| Evidence | Verified outcome |
+| --- | --- |
+| Network | NEAR Testnet |
+| DAO | `demo.factory.yawrd.testnet` |
+| Payout Proposal | #1 |
+| Stewards | `yawrd1.testnet` and `yawrd.testnet` |
+| Governance result | 2/2 separate approvals |
+| Task B reward | 1 NEAR Testnet |
+| Recipient | `keelbase1.testnet` |
+| Reward Payout status | **Paid — successful transfer verified on-chain** |
+
+- Final steward approval transaction: [`RaXRoBEcCSMoQcas4P8Yu46jp2hZVrJs6CPNuHALF6R`](https://testnet.nearblocks.io/txns/RaXRoBEcCSMoQcas4P8Yu46jp2hZVrJs6CPNuHALF6R).
+- Resulting successful transfer receipt: `DcwQrmzbh9WRaJ71sWPBxgYbvP19dyPQ8mCuDU9kmdy` — [View Payout Transfer in the execution view](https://testnet.nearblocks.io/txns/RaXRoBEcCSMoQcas4P8Yu46jp2hZVrJs6CPNuHALF6R/execution#DcwQrmzbh9WRaJ71sWPBxgYbvP19dyPQ8mCuDU9kmdy).
+
+The receipt records the successful 1 NEAR transfer from the DAO to `keelbase1.testnet` resulting from the final approval transaction; it is not a separate transaction hash. Two approvals alone do not establish payment. The deployed Yawrd UI displays Paid and the verified payout receipt in public Project Identity and in the rewarded contributor's Task B view.
+
+## Repository contents
+
+- [Project Progress](components/ProjectProgress.tsx) — Task A component.
+- [Crew and Contributions](components/CrewAndContributions.tsx) — Task B component.
+- [Public contract guide](contracts/build-progress/README.md), [TypeScript types and validators](contracts/build-progress/contract.ts), and [synthetic fixtures](contracts/build-progress/fixtures.ts) — shared inputs for both components.
+- [Task A brief](TASK-A.md), [provenance evidence](CONTRIBUTION-EVIDENCE.md), and [focused React tests](test/component.react.test.mjs) — Task A handoff and verification support.
 
 ## Contributing
 
 Contributions follow bounded project tasks, pull requests and human review. Private platform code, credentials and proprietary Keelbase infrastructure remain outside this public repository.
 
 - Read [Task A — Project Progress](TASK-A.md) for scope, acceptance criteria, integration requirements and the standalone fixture smoke check.
+- Consult [Task B — Crew and Contributions](https://github.com/vandigital/yawrd-build-progress/pull/4) and its integration guidance below for the merged component and verification record.
 - Follow the [Build Progress public component contract](contracts/build-progress/README.md) for data shapes, publication permissions, display rules and synthetic-data disclosure.
 
-The repository includes the contract, validators, synthetic fixtures, Task A component and focused verification setup. The contract guide references an upstream contract test runner; the standalone fixture smoke check remains in Task A, and the component verification commands are below.
+The repository includes both components, the contract, validators, synthetic fixtures and the focused Task A verification setup. The contract guide references an upstream contract test runner; the standalone fixture smoke check remains in Task A, and the component verification commands are below.
 
 ## Task A integration
 
@@ -94,7 +135,7 @@ Styling is the original inline React style objects: a centered panel with a
 rules. There are no external CSS, icon or design-system requirements. This is a
 portable functional contribution, not a finished Yawrd UI.
 
-## Browser review and known integration limitation
+## Task A browser review and known integration limitation
 
 The November 6, 2026 focused Chromium review checked the populated and empty
 synthetic fixtures at 320px, 768px and 1280px. Those fixtures and long titles and
@@ -115,7 +156,7 @@ Actual screen-reader operation, other browsers, physical mobile devices and
 full-page host integration were not tested. Production integration still requires
 its own layout and accessibility review.
 
-## Reproduce the focused checks
+## Reproduce the Task A focused checks
 
 The root manifest is a private verification host, not a published package. Its
 five development dependencies and lockfile reuse the previously verified React
@@ -144,6 +185,84 @@ perform browser, responsive layout, contrast or assistive-technology testing.
 
 See [CONTRIBUTION-EVIDENCE.md](./CONTRIBUTION-EVIDENCE.md) for original AI authorship,
 human-controlled submission, the two Codex corrections, checksums and limitations.
+
+## Task B integration
+
+[components/CrewAndContributions.tsx](components/CrewAndContributions.tsx)
+exports named/default `CrewAndContributions`, `CrewAndContributionsProps` and
+`CrewAndContributionsData`. Its only prop is `data: CrewAndContributionsData`.
+Use the same React/TypeScript host prerequisites and directory layout described
+for Task A; there is no framework, external stylesheet or private platform dependency.
+
+The [shared contract](contracts/build-progress/README.md) defines `contributors`
+with optional public profiles and separately authorized agent identities, and
+`contributions` with human attribution, optional explicit agent attribution,
+Accepted/Integrated labels and optional evidence links. Neither status implies
+reward approval or payment. The component calls `assertCrewAndContributionsData`
+before rendering; malformed input throws without partial rendering. Handle
+failures through the host's rendering/error boundary without exposing rejected
+values. React escapes text; supplied validated HTTPS links open with
+`noopener noreferrer` and are never fetched or embedded. Agent attribution is
+shown only when a contribution explicitly references its contributor's published
+agent. Empty collections display neutral messages.
+
+For example, from a host module at the repository root, show both panels with
+matching populated or empty synthetic inputs:
+
+```tsx
+import { ProjectProgress } from './components/ProjectProgress.tsx';
+import { CrewAndContributions } from './components/CrewAndContributions.tsx';
+import {
+  syntheticProjectProgress,
+  syntheticCrewAndContributions,
+  syntheticEmptyProjectProgress,
+  syntheticEmptyCrewAndContributions,
+} from './contracts/build-progress/fixtures.ts';
+
+export function SyntheticBuildProgressExamples() {
+  return (
+    <>
+      <ProjectProgress data={syntheticProjectProgress} />
+      <CrewAndContributions data={syntheticCrewAndContributions} />
+      <ProjectProgress data={syntheticEmptyProjectProgress} />
+      <CrewAndContributions data={syntheticEmptyCrewAndContributions} />
+    </>
+  );
+}
+```
+
+Each matching pair shares `projectId`, `schemaVersion` and `dataKind`; each panel
+visibly discloses synthetic data. These invented Crew Members, agents, statuses,
+dates and links are not actual YAW-001 activity. Real snapshots require deliberate
+publication approval, including separate permission for agent identities; shape
+validation alone cannot establish that permission.
+
+Task B uses semantic section/list markup, a bold synthetic notice and inline
+`overflowWrap: "anywhere"` on contribution titles. Host styling, responsive
+behavior and accessibility still require integrated review.
+
+## Task B verification record
+
+The [merged Task B PR](https://github.com/vandigital/yawrd-build-progress/pull/4)
+records successful strict TypeScript and public-export verification, **12/12
+focused React rendering checks**, **6/6 focused browser layout checks**, and
+**6/6 browser region/disclosure/link checks**. Browser checks used standalone
+component markup; full application integration, screen-reader and keyboard
+testing remain separate.
+
+These are Task B's recorded results, separate from Task A's reproducible suite
+above. The checked-in `tsconfig.json` and `npm test` target Task A; Task B's
+verification harness is not included here, so `npm test` does not reproduce those
+Task B results.
+
+## Remaining Testnet beta integration
+
+Integrate both panels into the Yawrd UI/UX, review responsive behavior (including
+Task A's known unbroken-text overflow), and complete accessibility checks in the
+host application. Publish real data only through deliberately approved public
+snapshots with the required disclosure permissions. The combined Development
+preview and the completed contribution/reward lifecycle do not establish public
+Production integration of the complete Build Progress component experience.
 
 [Explore Yawrd](https://yawrd.keelbase.io/)
 
