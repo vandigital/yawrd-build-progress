@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "wordwake.public-baseline.v1",
+  "sourcePackageVersion": "yaw-002-wordwake-ww-v1-r1",
+  "contractVersion": "ww-v1",
+  "sourceReviewRecordSha256": "1643a35631c87af8882134e23692fbdd862d0d62246eef064db8a1e57b8255f0",
+  "approval": {
+    "recordedOn": "2026-11-13",
+    "approvedDefaults": [
+      "Eight-neighbor adjacency, including diagonals",
+      "Only authored solution paths accepted",
+      "Next-cell hint behavior",
+      "Selection-first undo under ww-v1",
+      "Restart restores initial puzzle state",
+      "T1 engine and one reference puzzle; T2 React player and two additional puzzles",
+      "Shared frozen contract and independent fixtures"
+    ],
+    "technicalReviewer": "Founder",
+    "acceptanceAuthority": "Founder"
+  },
+  "publication": "founder-authorized GitHub staging baseline; Yawrd activation pending",
+  "activation": "pending",
+  "preservedFiles": {
+    "SKILL.md": "b5e5f49815f7aedc2ba1dc8a040550bba98332fc47b126db047515db8df3d8fe",
+    "TASKS.json": "f16588ff9ff2e482dd2f6f7f895d5a00f475351257d3df6f3421279595fc357d",
+    "CONTRACT_FIXTURES.json": "5086a551951405836eea26b5fb3f73f724f66ad355abf56e7f7c42d432b1cd8c"
+  },
+  "blueprint": "Public summary derivative; original and full source/review records retained privately",
+  "license": "MIT for original WordWake materials; see LICENSE and THIRD_PARTY_NOTICES.md"
+}

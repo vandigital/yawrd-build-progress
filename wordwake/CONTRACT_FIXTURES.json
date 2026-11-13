@@ -1,0 +1,583 @@
+{
+  "contractVersion": "ww-v1",
+  "status": "system-proposed test data, not one of the three delivered original puzzles",
+  "puzzle": {
+    "id": "contract-example",
+    "title": "Contract fixture only",
+    "rows": 3,
+    "cols": 4,
+    "letters": [
+      "N",
+      "E",
+      "A",
+      "R",
+      "C",
+      "R",
+      "E",
+      "W",
+      "T",
+      "E",
+      "A",
+      "M"
+    ],
+    "solutions": [
+      {
+        "id": "near",
+        "word": "NEAR",
+        "path": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "id": "crew",
+        "word": "CREW",
+        "path": [
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "id": "team",
+        "word": "TEAM",
+        "path": [
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    ]
+  },
+  "initialState": {
+    "selected": [],
+    "accepted": [],
+    "hint": null,
+    "complete": false,
+    "feedback": "idle"
+  },
+  "vectors": [
+    {
+      "id": "non-neighbor",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 0
+        },
+        {
+          "type": "select",
+          "cell": 2
+        }
+      ],
+      "expected": {
+        "selected": [
+          0
+        ],
+        "accepted": [],
+        "hint": null,
+        "complete": false,
+        "feedback": "invalid-step"
+      }
+    },
+    {
+      "id": "repeat-cell",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 0
+        },
+        {
+          "type": "select",
+          "cell": 1
+        },
+        {
+          "type": "select",
+          "cell": 0
+        }
+      ],
+      "expected": {
+        "selected": [
+          0,
+          1
+        ],
+        "accepted": [],
+        "hint": null,
+        "complete": false,
+        "feedback": "invalid-step"
+      }
+    },
+    {
+      "id": "invalid-answer",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 0
+        },
+        {
+          "type": "select",
+          "cell": 1
+        },
+        {
+          "type": "submit"
+        }
+      ],
+      "expected": {
+        "selected": [
+          0,
+          1
+        ],
+        "accepted": [],
+        "hint": null,
+        "complete": false,
+        "feedback": "invalid-answer"
+      }
+    },
+    {
+      "id": "empty-submit",
+      "actions": [
+        {
+          "type": "submit"
+        }
+      ],
+      "expected": {
+        "selected": [],
+        "accepted": [],
+        "hint": null,
+        "complete": false,
+        "feedback": "invalid-answer"
+      }
+    },
+    {
+      "id": "reversed-answer",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 3
+        },
+        {
+          "type": "select",
+          "cell": 2
+        },
+        {
+          "type": "select",
+          "cell": 1
+        },
+        {
+          "type": "select",
+          "cell": 0
+        },
+        {
+          "type": "submit"
+        }
+      ],
+      "expected": {
+        "selected": [
+          3,
+          2,
+          1,
+          0
+        ],
+        "accepted": [],
+        "hint": null,
+        "complete": false,
+        "feedback": "invalid-answer"
+      }
+    },
+    {
+      "id": "accepted-word",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 0
+        },
+        {
+          "type": "select",
+          "cell": 1
+        },
+        {
+          "type": "select",
+          "cell": 2
+        },
+        {
+          "type": "select",
+          "cell": 3
+        },
+        {
+          "type": "submit"
+        }
+      ],
+      "expected": {
+        "selected": [],
+        "accepted": [
+          "near"
+        ],
+        "hint": null,
+        "complete": false,
+        "feedback": "accepted"
+      }
+    },
+    {
+      "id": "overlap",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 0
+        },
+        {
+          "type": "select",
+          "cell": 1
+        },
+        {
+          "type": "select",
+          "cell": 2
+        },
+        {
+          "type": "select",
+          "cell": 3
+        },
+        {
+          "type": "submit"
+        },
+        {
+          "type": "select",
+          "cell": 0
+        }
+      ],
+      "expected": {
+        "selected": [],
+        "accepted": [
+          "near"
+        ],
+        "hint": null,
+        "complete": false,
+        "feedback": "invalid-step"
+      }
+    },
+    {
+      "id": "hint-initial",
+      "actions": [
+        {
+          "type": "hint"
+        }
+      ],
+      "expected": {
+        "selected": [],
+        "accepted": [],
+        "hint": {
+          "solutionId": "near",
+          "cell": 0
+        },
+        "complete": false,
+        "feedback": "hint"
+      }
+    },
+    {
+      "id": "hint-progress",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 0
+        },
+        {
+          "type": "hint"
+        }
+      ],
+      "expected": {
+        "selected": [
+          0
+        ],
+        "accepted": [],
+        "hint": {
+          "solutionId": "near",
+          "cell": 1
+        },
+        "complete": false,
+        "feedback": "hint"
+      }
+    },
+    {
+      "id": "undo-selection",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 0
+        },
+        {
+          "type": "select",
+          "cell": 1
+        },
+        {
+          "type": "undo"
+        }
+      ],
+      "expected": {
+        "selected": [
+          0
+        ],
+        "accepted": [],
+        "hint": null,
+        "complete": false,
+        "feedback": "idle"
+      }
+    },
+    {
+      "id": "undo-accepted",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 0
+        },
+        {
+          "type": "select",
+          "cell": 1
+        },
+        {
+          "type": "select",
+          "cell": 2
+        },
+        {
+          "type": "select",
+          "cell": 3
+        },
+        {
+          "type": "submit"
+        },
+        {
+          "type": "undo"
+        }
+      ],
+      "expected": {
+        "selected": [],
+        "accepted": [],
+        "hint": null,
+        "complete": false,
+        "feedback": "idle"
+      }
+    },
+    {
+      "id": "undo-empty",
+      "actions": [
+        {
+          "type": "undo"
+        }
+      ],
+      "expected": {
+        "selected": [],
+        "accepted": [],
+        "hint": null,
+        "complete": false,
+        "feedback": "idle"
+      }
+    },
+    {
+      "id": "restart",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 0
+        },
+        {
+          "type": "select",
+          "cell": 1
+        },
+        {
+          "type": "select",
+          "cell": 2
+        },
+        {
+          "type": "select",
+          "cell": 3
+        },
+        {
+          "type": "submit"
+        },
+        {
+          "type": "select",
+          "cell": 4
+        },
+        {
+          "type": "hint"
+        },
+        {
+          "type": "restart"
+        }
+      ],
+      "expected": {
+        "selected": [],
+        "accepted": [],
+        "hint": null,
+        "complete": false,
+        "feedback": "idle"
+      }
+    },
+    {
+      "id": "coverage-gap",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 0
+        },
+        {
+          "type": "select",
+          "cell": 1
+        },
+        {
+          "type": "select",
+          "cell": 2
+        },
+        {
+          "type": "select",
+          "cell": 3
+        },
+        {
+          "type": "submit"
+        },
+        {
+          "type": "select",
+          "cell": 4
+        },
+        {
+          "type": "select",
+          "cell": 5
+        },
+        {
+          "type": "select",
+          "cell": 6
+        },
+        {
+          "type": "select",
+          "cell": 7
+        },
+        {
+          "type": "submit"
+        }
+      ],
+      "expected": {
+        "selected": [],
+        "accepted": [
+          "near",
+          "crew"
+        ],
+        "hint": null,
+        "complete": false,
+        "feedback": "accepted"
+      }
+    },
+    {
+      "id": "complete",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 0
+        },
+        {
+          "type": "select",
+          "cell": 1
+        },
+        {
+          "type": "select",
+          "cell": 2
+        },
+        {
+          "type": "select",
+          "cell": 3
+        },
+        {
+          "type": "submit"
+        },
+        {
+          "type": "select",
+          "cell": 4
+        },
+        {
+          "type": "select",
+          "cell": 5
+        },
+        {
+          "type": "select",
+          "cell": 6
+        },
+        {
+          "type": "select",
+          "cell": 7
+        },
+        {
+          "type": "submit"
+        },
+        {
+          "type": "select",
+          "cell": 8
+        },
+        {
+          "type": "select",
+          "cell": 9
+        },
+        {
+          "type": "select",
+          "cell": 10
+        },
+        {
+          "type": "select",
+          "cell": 11
+        },
+        {
+          "type": "submit"
+        }
+      ],
+      "expected": {
+        "selected": [],
+        "accepted": [
+          "near",
+          "crew",
+          "team"
+        ],
+        "hint": null,
+        "complete": true,
+        "feedback": "accepted"
+      }
+    },
+    {
+      "id": "diagonal-select",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 0
+        },
+        {
+          "type": "select",
+          "cell": 5
+        }
+      ],
+      "expected": {
+        "selected": [
+          0,
+          5
+        ],
+        "accepted": [],
+        "hint": null,
+        "complete": false,
+        "feedback": "idle"
+      }
+    },
+    {
+      "id": "out-of-range",
+      "actions": [
+        {
+          "type": "select",
+          "cell": 12
+        }
+      ],
+      "expected": {
+        "selected": [],
+        "accepted": [],
+        "hint": null,
+        "complete": false,
+        "feedback": "invalid-step"
+      }
+    }
+  ]
+}
