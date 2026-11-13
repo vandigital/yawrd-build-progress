@@ -1,0 +1,9 @@
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+.env*
+.vercel/
+*.key
+*.pem
+.npmrc

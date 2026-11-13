@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "shared/**/*.ts",
+    "test-support/**/*.ts",
+    "player/**/*.ts",
+    "player/**/*.tsx",
+    "player-tests/**/*.ts",
+    "player-tests/**/*.tsx",
+    "baseline-tests/t2.test.tsx",
+    "app/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

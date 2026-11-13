@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "wordwake.task-package.design.v1",
+  "status": "founder-review; not activated; not a live generator import",
+  "contractVersion": "ww-v1",
+  "activation": {
+    "repositoryUrl": null,
+    "baselineSha": null,
+    "branchConvention": null,
+    "assignees": null,
+    "reviewers": null,
+    "testCommand": null,
+    "previewCommand": null,
+    "integrationAuthorizer": null
+  },
+  "tasks": [
+    {
+      "contractVersion": "ww-v1",
+      "sharedInputs": [
+        "SKILL.md",
+        "CONTRACT_FIXTURES.json"
+      ],
+      "prerequisites": [
+        "Package/defaults approved for the activation baseline",
+        "A1\u2013A3 activation details completed; repository and existing tooling verified"
+      ],
+      "reviewBoundary": "Focused PR for assigned scope. Task evidence is provisional until final real-engine, all-three-puzzle integration review. No merge, deploy, publish, spending or wallet permission.",
+      "requiredEvidence": [
+        "Baseline and PR head SHA, files changed, exact commands and actual output/pass counts",
+        "Requirement/acceptance mapping, limitations, assumptions and integration notes; no secrets or private source",
+        "Disclose fixture/test-double use separately from real behavior; no unrun tests described as passing"
+      ],
+      "id": "T1",
+      "title": "Core puzzle engine and one reference puzzle",
+      "dependencies": [],
+      "requirementIds": [
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F7",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "ownership": [
+        "engine/**",
+        "puzzles/reference.json",
+        "engine-tests/**"
+      ],
+      "deliverables": [
+        "Pure TypeScript ww-v1 Engine object and documented exports; no React/DOM dependency",
+        "One original handcrafted themed reference puzzle with complete ordered solution manifest",
+        "Standalone engine harness and automated tests using supplied vectors plus malformed-puzzle tests",
+        "Assembly/import notes and existing-runner command mapping"
+      ],
+      "acceptanceCriteria": [
+        {
+          "id": "T1-AC1",
+          "check": "Run engine tests and minimal harness on activation baseline with no T2 imports/files. Use exact Engine types and immutable transitions in SKILL.md.",
+          "evidence": "Clean baseline instructions, commands, pass output and exported API/typecheck."
+        },
+        {
+          "id": "T1-AC2",
+          "check": "For every fixture vector, start from initial state, replay actions and deep-compare entire expected state. Test rejected non-neighbor, duplicate, overlap, reversed/invalid/empty answers and completion false with uncovered cells.",
+          "evidence": "Per-vector results and immutability checks for input puzzle/state."
+        },
+        {
+          "id": "T1-AC3",
+          "check": "Validate reference solution paths for spelling, adjacency, uniqueness, disjointness and exact full-board coverage; reject wrong dimensions, missing/duplicate/out-of-range cells and incomplete manifests.",
+          "evidence": "Machine-check output for reference puzzle and failing negative fixtures."
+        },
+        {
+          "id": "T1-AC4",
+          "check": "Hint never accepts a word; undo selection and last accepted word, empty undo, restart and complete-state restart match contract.",
+          "evidence": "Automated state assertions, including complete false after undo and initial equality after restart."
+        }
+      ]
+    },
+    {
+      "contractVersion": "ww-v1",
+      "sharedInputs": [
+        "SKILL.md",
+        "CONTRACT_FIXTURES.json"
+      ],
+      "prerequisites": [
+        "Package/defaults approved for the activation baseline",
+        "A1\u2013A3 activation details completed; repository and existing tooling verified"
+      ],
+      "reviewBoundary": "Focused PR for assigned scope. Task evidence is provisional until final real-engine, all-three-puzzle integration review. No merge, deploy, publish, spending or wallet permission.",
+      "requiredEvidence": [
+        "Baseline and PR head SHA, files changed, exact commands and actual output/pass counts",
+        "Requirement/acceptance mapping, limitations, assumptions and integration notes; no secrets or private source",
+        "Disclose fixture/test-double use separately from real behavior; no unrun tests described as passing"
+      ],
+      "id": "T2",
+      "title": "React player interface and two additional puzzles",
+      "dependencies": [],
+      "requirementIds": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6"
+      ],
+      "ownership": [
+        "player/**",
+        "puzzles/additional-*.json",
+        "player-tests/**"
+      ],
+      "deliverables": [
+        "React WordWakePlayer with injected Engine and Puzzle[] props; local standalone preview",
+        "Two original handcrafted additional themed puzzles with ordered solution manifests",
+        "Clearly labeled scripted engine double, UI tests and independent manifest checker using existing tools",
+        "Proposed Easter-egg entry/placement notes and real-engine wiring instructions; no host integration"
+      ],
+      "acceptanceCriteria": [
+        {
+          "id": "T2-AC1",
+          "check": "Preview and tests run on activation baseline without T1. Scripted double supplies controlled ww-v1 states and records exact dispatch actions; no unfinished engine import.",
+          "evidence": "Commands, pass output, preview instructions and explicit test-double label."
+        },
+        {
+          "id": "T2-AC2",
+          "check": "Select cells with mouse, touch and keyboard; submit emits submit, Hint emits hint, Undo emits undo and Restart emits restart. Controlled accepted, invalid-step, invalid-answer, hint and complete states render distinguishably. Puzzle change calls initial with new puzzle and resets prior board state.",
+          "evidence": "UI assertions for dispatch and controlled rendering plus interaction recording."
+        },
+        {
+          "id": "T2-AC3",
+          "check": "At 360\u00d7800 and 1280\u00d7800, no horizontal page overflow, readable rules, labeled controls, visible focus, usable cell targets at least 44 CSS px, touch path entry without accidental page gestures within board, and completion feedback.",
+          "evidence": "Viewport/browser/input details, screenshots and manual check results; real touch or disclose emulation limits."
+        },
+        {
+          "id": "T2-AC4",
+          "check": "Independent checker proves spelling, adjacency, no overlap and exact coverage for each additional puzzle. Explain original authorship and collective theme coverage with T1 puzzle at integration.",
+          "evidence": "Two manifests, checker command/output, authorship/theme note; combined theme check remains integration gate."
+        }
+      ]
+    }
+  ],
+  "integrationCheckpoint": {
+    "requirements": [
+      "Use real T1 engine with T2 player and all three original puzzles; fixture double removed from real-game entry",
+      "Run both task suites, contract vectors, all puzzle manifest checks and host build in authorized review environment",
+      "Complete each puzzle on phone and desktop; verify incorrect submissions, hint, undo, restart, puzzle switching and exact coverage",
+      "Record playtest duration and clarity feedback against the few-minute goal; report problems without inventing measured success",
+      "Confirm collective founder themes and original content; reviewer accepts contribution evidence",
+      "Resolve M2/M3 and obtain separate authorization for host Easter-egg integration; publication/deployment still requires authorization"
+    ],
+    "acceptor": null,
+    "hostInterface": null
+  }
+}

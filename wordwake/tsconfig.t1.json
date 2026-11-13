@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "shared/**/*.ts",
+    "engine/**/*.ts",
+    "engine-tests/**/*.ts",
+    "baseline-tests/t1.test.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
